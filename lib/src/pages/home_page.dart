@@ -1,50 +1,69 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_components/src/utils/icons_util.dart';
+
 import 'package:flutter_components/src/providers/config_app.dart';
+
+import 'package:flutter_components/src/pages/alert_page.dart';
 
 class HomePage extends StatelessWidget {
 
-  @override
-  Widget build(BuildContext context) {
+   @override
+   Widget build(BuildContext context) {
 
-    return Scaffold(
+   return Scaffold(
       appBar: AppBar(
         title: Text('Componentes'),
       ),
       body: _list()
-    );
+   );
     
   }
 
-  Widget _list() {
+   Widget _list() {
+      // print(configAppProvider.options);
+      // configAppProvider.loadData().then((value) => print(value));
 
-    // print(configAppProvider.options);
-    // configAppProvider.loadData().then((value) => print(value));
-
-    return FutureBuilder(
-      future: configAppProvider.loadData(),
-      initialData: [],
+      return FutureBuilder(
+         future: configAppProvider.loadData(),
+         initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
-        return ListView(
-          children: _listItems(snapshot.data),
-        );
+         return ListView(
+            children: _listItems(snapshot.data, context),
+         );
 
       },
     );
   
   }
   
-  List<Widget> _listItems(List<dynamic>? data){
+   List<Widget> _listItems(List<dynamic>? data, context){
     
-    final List<Widget> options = [];
+      final List<Widget> options = [];
 
-    data?.forEach((item){
+      data?.forEach((item){
       final widgetTemp = Column(children: [
-        ListTile(title: Text(item.text),)
+
+         ListTile(
+            title: Text(item['text']),
+            leading: getIcon(item['icon']),
+            trailing: Icon( Icons.arrow_forward ),
+            onTap: (){
+
+                  Navigator.pushNamed(context, item['route']);
+
+               // final route = MaterialPageRoute(builder: (context) =>  AlertPage());
+               // Navigator.push(context, route);
+            
+            },
+         ),
+         Divider()
+
       ]);
       options.add(widgetTemp);
-    });
-    return options;
+   });
+   return options;
 
   }
+
 }

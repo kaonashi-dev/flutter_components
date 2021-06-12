@@ -10,7 +10,11 @@ class CardPage extends StatelessWidget{
             children: [
                _card1(),
                SizedBox(height: 30.0),
-               _card2()
+               _card2(),
+               SizedBox(height: 30.0),
+               _card3(),
+               SizedBox(height: 30.0),
+               _card2(),
             ],
          ),
       );
@@ -44,7 +48,7 @@ class CardPage extends StatelessWidget{
    }
 
    Widget _card2(){
-      return Card(
+      final card = Container(
          child: Column(children: [
             FadeInImage(
                placeholder: AssetImage('assets/jar-loading.gif'), 
@@ -61,6 +65,53 @@ class CardPage extends StatelessWidget{
                child: Text('Descripción de la imagen'),
             )
          ]),
+      );
+
+      return Container(
+         decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: <BoxShadow>[
+               BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 10.0,
+                  spreadRadius: 3.0
+               )
+            ],
+            borderRadius: BorderRadius.circular(30.0),
+         ),
+         child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: card,
+         ),
+      );
+   }
+
+      Widget _card3(){
+      return Card(
+         elevation: 9,
+         shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(19.0) ),
+         child: Column(
+            children: [
+               ListTile(
+                  leading: Icon( Icons.airport_shuttle_rounded, color: Colors.purple),
+                  title: Text('Este es el titulo de la tarjeta'),
+                  subtitle: Text('Esta es na descripción detallada de la tarjeta'),
+               ),
+               Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                     TextButton(
+                        onPressed: null,
+                        child: Text('Cancelar')
+                     ),
+                     TextButton(
+                        onPressed: null,
+                        child: Text('Aceptar')
+                     ),
+                  ],
+               )
+            ],
+         ),
       );
    }
 }

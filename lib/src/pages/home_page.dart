@@ -4,8 +4,6 @@ import 'package:flutter_components/src/utils/icons_util.dart';
 
 import 'package:flutter_components/src/providers/config_app.dart';
 
-import 'package:flutter_components/src/pages/alert_page.dart';
-
 class HomePage extends StatelessWidget {
 
    @override

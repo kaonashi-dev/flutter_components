@@ -46,14 +46,7 @@ class HomePage extends StatelessWidget {
             title: Text(item['text']),
             leading: getIcon(item['icon']),
             trailing: Icon( Icons.arrow_forward ),
-            onTap: (){
-
-                  Navigator.pushNamed(context, item['route']);
-
-               // final route = MaterialPageRoute(builder: (context) =>  AlertPage());
-               // Navigator.push(context, route);
-            
-            },
+            onTap: () => Navigator.pushNamed(context, item['route'])
          ),
          Divider()
 

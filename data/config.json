@@ -20,6 +20,11 @@
             "route" : "animatedContainer",
             "icon" : "animation",
             "text": "Animated container"
+        },
+        {
+            "route" : "inputs",
+            "icon" : "input",
+            "text": "Inputs"
         }
     ]
 }

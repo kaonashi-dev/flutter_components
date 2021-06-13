@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 import 'package:flutter_components/src/routes/routes.dart';
 
 void main() {
@@ -11,6 +13,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      localizationsDelegates: [
+         GlobalMaterialLocalizations.delegate,
+         GlobalWidgetsLocalizations.delegate,
+         GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+         const Locale('en', 'US'),
+         const Locale('es', 'ES'),
+      ],
+
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),

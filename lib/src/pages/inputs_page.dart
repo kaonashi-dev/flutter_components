@@ -26,6 +26,8 @@ class _InputPageState extends State<InputsPage>{
                Divider(),
                _getInputEmail(),
                Divider(),
+               _getEmail(),
+               Divider(),
                _getInputPass(),
                Divider(),
                _getInputDate(context)
@@ -56,6 +58,12 @@ class _InputPageState extends State<InputsPage>{
    Widget _getName(){
       return ListTile(
          title: Text('EL nombre es: $_name'),
+      );
+   }
+
+   Widget _getEmail(){
+      return ListTile(
+         title: Text('EL email es: $_email'),
       );
    }
 

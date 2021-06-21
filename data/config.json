@@ -30,6 +30,11 @@
             "route" : "slider",
             "icon" : "slider",
             "text": "Sliders - Ckeck"
+        },
+        {
+            "route" : "list",
+            "icon" : "list",
+            "text": "LIstas - Scroll"
         }
     ]
 }

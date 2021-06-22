@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dart:async';
+
 class ListViewPage extends StatefulWidget {
 
   @override
@@ -35,7 +37,12 @@ class _ListViewPageState extends State<ListViewPage> {
    Widget build(BuildContext context) {
       return Scaffold(
          appBar: AppBar(title: Text('Listas')),
-         body: _getList(),
+         body: Stack(
+            children: [
+               _getList(),
+               _getLoading()
+            ],
+         ),
       );
    }
 
@@ -66,8 +73,46 @@ class _ListViewPageState extends State<ListViewPage> {
       setState(() {});
    }
 
-   Future _fetchData(){
+   Future<Null> _fetchData() async{
+      
       _isLoading = true;
       setState(() {});
+
+      final duration = new Duration(seconds: 2);
+      new Timer(duration, httpRespose);
+
+   }
+
+   void httpRespose(){
+      _isLoading = false;
+      _add();
+   }
+
+   Widget _getLoading(){
+
+      if (_isLoading) {
+        return Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+               Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator()
+                  ],
+               ),
+               SizedBox(height: 300,)
+            ],
+        );
+      } else {
+         return Container();
+      }
+
+   }
+
+   @override
+   void dispose() {
+      super.dispose();
+      _scrollController.dispose();
    }
 }
